@@ -1,0 +1,48 @@
+{
+  "search_criteria": {
+    "suburbs": [
+      "Fortitude Valley",
+      "South Brisbane",
+      "West End",
+      "New Farm",
+      "Paddington",
+      "Newstead",
+      "Bowen Hills"
+    ],
+    "min_land_area": 600,
+    "max_price": 5000000,
+    "property_types": [
+      "Commercial",
+      "House",
+      "Land",
+      "Industrial"
+    ],
+    "zones": [
+      "High Density Residential",
+      "Major Centre",
+      "Mixed Use",
+      "Low-Medium Density Residential"
+    ]
+  },
+  "alert_preferences": {
+    "email_enabled": false,
+    "email_to": "your-email@example.com",
+    "console_enabled": true,
+    "min_roi_percentage": 20,
+    "min_estimated_dwellings": 5,
+    "alert_summary": true
+  },
+  "monitoring": {
+    "check_interval_minutes": 60,
+    "enabled": true
+  },
+  "notes": {
+    "info": "Configuration file for Brisbane Development Site Alert System",
+    "suburbs": "List of Brisbane suburbs to monitor",
+    "min_land_area": "Minimum land area in square meters",
+    "max_price": "Maximum property price in AUD",
+    "min_roi_percentage": "Minimum estimated ROI to trigger alert",
+    "min_estimated_dwellings": "Minimum number of potential dwellings",
+    "check_interval_minutes": "How often to check for new listings (in minutes)"
+  }
+}

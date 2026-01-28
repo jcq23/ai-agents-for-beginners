@@ -1,0 +1,31 @@
+# Brisbane Development Site Finder - Python Dependencies
+
+# Core AI Framework
+semantic-kernel>=1.0.0
+
+# OpenAI Integration
+openai>=1.0.0
+
+# Azure Integration (optional)
+azure-ai-inference>=1.0.0
+
+# Utilities
+python-dotenv>=1.0.0
+requests>=2.31.0
+
+# Email (for alerts)
+secure-smtplib>=0.1.1
+
+# Data Processing
+pandas>=2.0.0
+
+# Optional: For future web scraping capabilities
+# beautifulsoup4>=4.12.0
+# selenium>=4.0.0
+
+# Optional: For database storage
+# sqlalchemy>=2.0.0
+# psycopg2-binary>=2.9.0  # PostgreSQL
+
+# Optional: For advanced scheduling
+# apscheduler>=3.10.0
