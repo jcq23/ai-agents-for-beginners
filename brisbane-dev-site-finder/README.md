@@ -2,6 +2,8 @@
 
 An AI-powered application that finds great development sites in Brisbane by searching planning and zoning guides and monitoring online property listings. It automatically sends alerts when suitable development opportunities are found.
 
+**🏢 FOCUS: Large-scale development sites with 200+ unit capacity**
+
 ## Features
 
 - 🔍 **AI-Powered Search**: Uses AI agents to intelligently search and analyze development opportunities
@@ -289,6 +291,7 @@ For production use, integrate with:
 - Planning alerts and DA tracker
 
 **Property Listings**:
+- RealCommercial.com.au API (primary for commercial & development sites)
 - Domain.com.au API
 - REA (realestate.com.au) API
 - CoreLogic API

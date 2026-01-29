@@ -15,6 +15,7 @@ class PropertyListingTool:
     def __init__(self):
         # Simulated property listings database
         # In production, this would integrate with real estate APIs like:
+        # - RealCommercial.com.au API (commercial & development sites)
         # - Domain.com.au API
         # - REA (realestate.com.au) API
         # - CoreLogic API
@@ -353,6 +354,126 @@ class PropertyListingTool:
                 "listed_date": (base_date - timedelta(days=12)).strftime("%Y-%m-%d"),
                 "agent": "Ray White Paddington",
                 "contact": "07 3368 7777"
+            },
+            # LARGE-SCALE DEVELOPMENT SITES (200+ UNITS)
+            {
+                "listing_id": "BNE-101",
+                "address": "450-470 Ann Street, Brisbane City QLD 4000",
+                "suburb": "Brisbane City",
+                "property_type": "Commercial",
+                "price": 28500000,
+                "land_area_sqm": 4200,
+                "zone": "Major Centre",
+                "development_potential": True,
+                "description": "Premium CBD site with 25,200 sqm GFA potential. Perfect for mixed-use tower development. 350+ unit capacity.",
+                "existing_improvements": "Old office buildings - ready for demolition",
+                "current_rental_income_pa": 850000,  # Multiple commercial tenants
+                "frontage_m": 60,
+                "listed_date": (base_date - timedelta(days=2)).strftime("%Y-%m-%d"),
+                "agent": "CBRE",
+                "contact": "07 3222 1111"
+            },
+            {
+                "listing_id": "BNE-102",
+                "address": "250 Upper Roma Street, Brisbane City QLD 4000",
+                "suburb": "Brisbane City",
+                "property_type": "Land",
+                "price": 35000000,
+                "land_area_sqm": 5500,
+                "zone": "Major Centre",
+                "development_potential": True,
+                "description": "Rare large CBD site. Approved DA for 40-storey residential tower. 440+ apartments potential.",
+                "existing_improvements": "Vacant cleared land",
+                "current_rental_income_pa": 0,  # Vacant
+                "frontage_m": 75,
+                "listed_date": (base_date - timedelta(days=8)).strftime("%Y-%m-%d"),
+                "agent": "Knight Frank",
+                "contact": "07 3246 8888"
+            },
+            {
+                "listing_id": "BNE-103",
+                "address": "1-15 Bowen Street, Bowen Hills QLD 4006",
+                "suburb": "Bowen Hills",
+                "property_type": "Industrial",
+                "price": 22000000,
+                "land_area_sqm": 6800,
+                "zone": "High Density Residential",
+                "development_potential": True,
+                "description": "Inner-city warehouse precinct. High-density residential zoning. 340+ unit development site.",
+                "existing_improvements": "Industrial warehouses - lease expires Dec 2026",
+                "current_rental_income_pa": 580000,  # Industrial tenants
+                "frontage_m": 85,
+                "listed_date": (base_date - timedelta(days=15)).strftime("%Y-%m-%d"),
+                "agent": "Colliers International",
+                "contact": "07 3222 3333"
+            },
+            {
+                "listing_id": "BNE-104",
+                "address": "88-110 Commercial Road, Newstead QLD 4006",
+                "suburb": "Newstead",
+                "property_type": "Commercial",
+                "price": 18500000,
+                "land_area_sqm": 3800,
+                "zone": "Mixed Use",
+                "development_potential": True,
+                "description": "Newstead riverfront proximity. Mixed-use zoning. 250+ apartment potential with ground floor retail.",
+                "existing_improvements": "Showrooms and offices",
+                "current_rental_income_pa": 420000,  # Multiple commercial tenants
+                "frontage_m": 55,
+                "listed_date": (base_date - timedelta(days=6)).strftime("%Y-%m-%d"),
+                "agent": "JLL",
+                "contact": "07 3231 2888"
+            },
+            {
+                "listing_id": "BNE-105",
+                "address": "200-230 Montague Road, West End QLD 4101",
+                "suburb": "West End",
+                "property_type": "Industrial",
+                "price": 32000000,
+                "land_area_sqm": 8500,
+                "zone": "High Density Residential",
+                "development_potential": True,
+                "description": "Landmark West End site. High-density zoning. 420+ unit capacity. River views from upper levels.",
+                "existing_improvements": "Light industrial complex",
+                "current_rental_income_pa": 720000,  # Multiple tenants
+                "frontage_m": 95,
+                "listed_date": (base_date - timedelta(days=4)).strftime("%Y-%m-%d"),
+                "agent": "Savills",
+                "contact": "07 3231 9888"
+            },
+            {
+                "listing_id": "BNE-106",
+                "address": "75-95 Breakfast Creek Road, Newstead QLD 4006",
+                "suburb": "Newstead",
+                "property_type": "Commercial",
+                "price": 42000000,
+                "land_area_sqm": 12000,
+                "zone": "Major Centre",
+                "development_potential": True,
+                "description": "Premium Newstead riverfront site. Major Centre zoning allows 72,000 sqm GFA. 960+ unit potential or mixed-use development.",
+                "existing_improvements": "Commercial buildings and car park",
+                "current_rental_income_pa": 1250000,  # Multiple commercial tenants
+                "frontage_m": 120,
+                "listed_date": (base_date - timedelta(days=1)).strftime("%Y-%m-%d"),
+                "agent": "CBRE",
+                "contact": "07 3222 1111"
+            },
+            {
+                "listing_id": "BNE-107",
+                "address": "350 Main Street, Kangaroo Point QLD 4169",
+                "suburb": "Kangaroo Point",
+                "property_type": "Land",
+                "price": 16500000,
+                "land_area_sqm": 4500,
+                "zone": "High Density Residential",
+                "development_potential": True,
+                "description": "Kangaroo Point cliff-top site with CBD views. High-density residential. 225+ apartments potential.",
+                "existing_improvements": "Cleared site ready for development",
+                "current_rental_income_pa": 0,  # Vacant land
+                "frontage_m": 65,
+                "listed_date": (base_date - timedelta(days=11)).strftime("%Y-%m-%d"),
+                "agent": "Ray White Commercial",
+                "contact": "07 3123 4567"
             }
         ]
 

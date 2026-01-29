@@ -4,24 +4,23 @@
       "Fortitude Valley",
       "South Brisbane",
       "West End",
-      "New Farm",
-      "Paddington",
       "Newstead",
-      "Bowen Hills"
+      "Bowen Hills",
+      "Spring Hill",
+      "Brisbane City",
+      "Woolloongabba"
     ],
-    "min_land_area": 600,
-    "max_price": 5000000,
+    "min_land_area": 2000,
+    "max_price": 50000000,
     "property_types": [
       "Commercial",
-      "House",
       "Land",
       "Industrial"
     ],
     "zones": [
       "High Density Residential",
       "Major Centre",
-      "Mixed Use",
-      "Low-Medium Density Residential"
+      "Mixed Use"
     ]
   },
   "alert_preferences": {
@@ -29,7 +28,7 @@
     "email_to": "your-email@example.com",
     "console_enabled": true,
     "min_roi_percentage": 20,
-    "min_estimated_dwellings": 5,
+    "min_estimated_dwellings": 200,
     "alert_summary": true
   },
   "monitoring": {
@@ -37,12 +36,12 @@
     "enabled": true
   },
   "notes": {
-    "info": "Configuration file for Brisbane Development Site Alert System",
-    "suburbs": "List of Brisbane suburbs to monitor",
-    "min_land_area": "Minimum land area in square meters",
-    "max_price": "Maximum property price in AUD",
+    "info": "Configuration file for Brisbane Development Site Alert System - FOCUSED ON LARGE-SCALE SITES (200+ UNITS)",
+    "suburbs": "High-density inner-city Brisbane suburbs for large developments",
+    "min_land_area": "Minimum 2000 sqm for large-scale developments",
+    "max_price": "Maximum property price in AUD (up to $50M for premium sites)",
     "min_roi_percentage": "Minimum estimated ROI to trigger alert",
-    "min_estimated_dwellings": "Minimum number of potential dwellings",
+    "min_estimated_dwellings": "Minimum 200+ buildable units for large-scale focus",
     "check_interval_minutes": "How often to check for new listings (in minutes)"
   }
 }
