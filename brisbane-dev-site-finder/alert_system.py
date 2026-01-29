@@ -121,7 +121,7 @@ class AlertSystem:
                 # Check if meets ROI and dwelling criteria
                 alert_prefs = self.config["alert_preferences"]
                 if (metrics.get("roi_percentage", 0) >= alert_prefs.get("min_roi_percentage", 0) and
-                    metrics.get("estimated_dwellings", 0) >= alert_prefs.get("min_estimated_dwellings", 0)):
+                    metrics.get("buildable_units", 0) >= alert_prefs.get("min_estimated_dwellings", 0)):
 
                     # Get zoning info
                     zoning = self.planning_tool.search_by_address(listing["address"])
@@ -164,9 +164,9 @@ class AlertSystem:
 
     def _send_console_alert(self, matches: List[Dict]):
         """Print alert to console."""
-        print("\n" + "=" * 80)
+        print("\n" + "=" * 90)
         print("🚨 NEW DEVELOPMENT SITE ALERT!")
-        print("=" * 80)
+        print("=" * 90)
         print(f"\nFound {len(matches)} new matching propert{'y' if len(matches) == 1 else 'ies'}:\n")
 
         for i, match in enumerate(matches, 1):
@@ -176,17 +176,44 @@ class AlertSystem:
 
             print(f"\n{i}. {listing['address']}")
             print(f"   📍 Suburb: {listing['suburb']}")
-            print(f"   💰 Price: ${listing['price']:,}")
+            print(f"   💰 Purchase Price: ${listing['price']:,}")
             print(f"   📏 Land Area: {listing['land_area_sqm']} sqm")
-            print(f"   🏗️  Zone: {zoning.get('zone', 'Unknown')}")
-            print(f"   🏘️  Estimated Dwellings: {metrics['estimated_dwellings']}")
-            print(f"   📊 Estimated ROI: {metrics['roi_percentage']}%")
-            print(f"   💵 Estimated Profit: ${metrics['estimated_profit']:,}")
-            print(f"   📱 Agent: {listing['agent']} - {listing['contact']}")
+
+            # Holding income metrics
+            rental_income = metrics.get('current_rental_income_pa', 0)
+            passing_yield = metrics.get('passing_yield_percentage', 0)
+            if rental_income > 0:
+                print(f"   💵 Current Rental Income: ${rental_income:,} p.a.")
+                print(f"   📈 Passing Yield: {passing_yield:.2f}%")
+            else:
+                print(f"   💵 Current Rental Income: Vacant (no holding income)")
+
+            print(f"   🏗️  Zoning: {zoning.get('zone', 'Unknown')} (FAR: {metrics.get('floor_area_ratio', 0)})")
+
+            # Developable area metrics
+            print(f"\n   📐 DEVELOPABLE AREA:")
+            print(f"      • Gross Floor Area: {metrics.get('gross_floor_area_sqm', 0):,.0f} sqm")
+            print(f"      • Net Floor Area (80% efficiency): {metrics.get('net_floor_area_sqm', 0):,.0f} sqm")
+            print(f"      • Buildable Units (60sqm avg): {metrics.get('buildable_units', 0)} units")
+
+            # Cost metrics
+            print(f"\n   💲 COST METRICS:")
+            print(f"      • Price per Land sqm: ${metrics.get('price_per_land_sqm', 0):,.2f}")
+            print(f"      • Price per Developable sqm: ${metrics.get('price_per_developable_sqm', 0):,.2f}")
+            print(f"      • Price per Buildable Unit: ${metrics.get('price_per_buildable_unit', 0):,.2f}")
+
+            # Development potential
+            print(f"\n   🏘️  DEVELOPMENT POTENTIAL:")
+            print(f"      • Estimated ROI: {metrics.get('roi_percentage', 0):.1f}%")
+            print(f"      • Estimated Profit: ${metrics.get('estimated_profit', 0):,}")
+            print(f"      • Potential Gross Value: ${metrics.get('potential_gross_value', 0):,}")
+            print(f"      • Est. Construction Cost: ${metrics.get('estimated_construction_cost', 0):,}")
+
+            print(f"\n   📱 Agent: {listing['agent']} - {listing['contact']}")
             print(f"   📝 {listing['description']}")
             print(f"   🔗 Listing ID: {listing['listing_id']}")
 
-        print("\n" + "=" * 80)
+        print("\n" + "=" * 90)
 
     def _send_email_alert(self, matches: List[Dict]):
         """
@@ -246,17 +273,50 @@ class AlertSystem:
             metrics = match["metrics"]
             zoning = match["zoning"]
 
+            # Format holding income section
+            rental_income = metrics.get('current_rental_income_pa', 0)
+            passing_yield = metrics.get('passing_yield_percentage', 0)
+            holding_income_html = ""
+            if rental_income > 0:
+                holding_income_html = f"""
+                <p><strong>💵 Current Rental Income:</strong> ${rental_income:,} p.a.</p>
+                <p><strong>📈 Passing Yield:</strong> {passing_yield:.2f}%</p>
+                """
+            else:
+                holding_income_html = "<p><strong>💵 Current Rental Income:</strong> Vacant (no holding income)</p>"
+
             properties_html += f"""
-            <div style="border: 1px solid #ddd; padding: 20px; margin: 20px 0; border-radius: 8px;">
+            <div style="border: 1px solid #ddd; padding: 20px; margin: 20px 0; border-radius: 8px; background-color: #f9f9f9;">
                 <h3 style="color: #2c3e50; margin-top: 0;">{listing['address']}</h3>
                 <p><strong>📍 Suburb:</strong> {listing['suburb']}</p>
-                <p><strong>💰 Price:</strong> ${listing['price']:,}</p>
+                <p><strong>💰 Purchase Price:</strong> ${listing['price']:,}</p>
                 <p><strong>📏 Land Area:</strong> {listing['land_area_sqm']} sqm</p>
-                <p><strong>🏗️ Zone:</strong> {zoning.get('zone', 'Unknown')}</p>
-                <p><strong>🏘️ Estimated Dwellings:</strong> {metrics['estimated_dwellings']}</p>
-                <p><strong>📊 Estimated ROI:</strong> {metrics['roi_percentage']}%</p>
-                <p><strong>💵 Estimated Profit:</strong> ${metrics['estimated_profit']:,}</p>
-                <p><strong>📱 Agent:</strong> {listing['agent']} - {listing['contact']}</p>
+                {holding_income_html}
+                <p><strong>🏗️ Zoning:</strong> {zoning.get('zone', 'Unknown')} (FAR: {metrics.get('floor_area_ratio', 0)})</p>
+
+                <h4 style="color: #34495e; margin-top: 15px; margin-bottom: 10px;">📐 Developable Area</h4>
+                <ul style="margin: 5px 0;">
+                    <li><strong>Gross Floor Area:</strong> {metrics.get('gross_floor_area_sqm', 0):,.0f} sqm</li>
+                    <li><strong>Net Floor Area (80% efficiency):</strong> {metrics.get('net_floor_area_sqm', 0):,.0f} sqm</li>
+                    <li><strong>Buildable Units (60sqm avg):</strong> {metrics.get('buildable_units', 0)} units</li>
+                </ul>
+
+                <h4 style="color: #34495e; margin-top: 15px; margin-bottom: 10px;">💲 Cost Metrics</h4>
+                <ul style="margin: 5px 0;">
+                    <li><strong>Price per Land sqm:</strong> ${metrics.get('price_per_land_sqm', 0):,.2f}</li>
+                    <li><strong>Price per Developable sqm:</strong> ${metrics.get('price_per_developable_sqm', 0):,.2f}</li>
+                    <li><strong>Price per Buildable Unit:</strong> ${metrics.get('price_per_buildable_unit', 0):,.2f}</li>
+                </ul>
+
+                <h4 style="color: #34495e; margin-top: 15px; margin-bottom: 10px;">🏘️ Development Potential</h4>
+                <ul style="margin: 5px 0;">
+                    <li><strong>Estimated ROI:</strong> {metrics.get('roi_percentage', 0):.1f}%</li>
+                    <li><strong>Estimated Profit:</strong> ${metrics.get('estimated_profit', 0):,}</li>
+                    <li><strong>Potential Gross Value:</strong> ${metrics.get('potential_gross_value', 0):,}</li>
+                    <li><strong>Est. Construction Cost:</strong> ${metrics.get('estimated_construction_cost', 0):,}</li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>📱 Agent:</strong> {listing['agent']} - {listing['contact']}</p>
                 <p style="color: #7f8c8d;">{listing['description']}</p>
                 <p><em>Listing ID: {listing['listing_id']}</em></p>
             </div>

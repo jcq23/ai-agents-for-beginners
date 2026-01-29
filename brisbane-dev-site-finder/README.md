@@ -5,10 +5,14 @@ An AI-powered application that finds great development sites in Brisbane by sear
 ## Features
 
 - 🔍 **AI-Powered Search**: Uses AI agents to intelligently search and analyze development opportunities
-- 📋 **Planning & Zoning Integration**: Searches Brisbane City Council planning and zoning data
+- 📋 **Planning & Zoning Integration**: Searches Brisbane City Council planning and zoning data with Floor Area Ratio (FAR) calculations
 - 🏘️ **Property Listing Monitor**: Monitors online property listings for development opportunities
-- 📊 **Development Analysis**: Calculates ROI, potential dwellings, and estimated profits
-- 🚨 **Smart Alerts**: Sends notifications when properties matching your criteria are found
+- 📊 **Comprehensive Financial Analysis**:
+  - Holding income and passing yield calculations
+  - Developable area metrics (GFA, NFA with 80% efficiency)
+  - Cost per developable sqm and per buildable unit
+  - ROI, potential profits, and construction cost estimates
+- 🚨 **Smart Alerts**: Sends detailed notifications when properties matching your criteria are found
 - 💬 **Interactive Chat**: Chat with the AI agent about development opportunities
 
 ## Architecture
@@ -228,20 +232,43 @@ The alert system:
 
 ## Development Metrics Calculated
 
-For each property, the system estimates:
+For each property, the system calculates comprehensive financial and development metrics:
 
-- **Price per sqm**: Land cost efficiency
-- **Estimated dwellings**: Based on zoning and land area
-- **Potential gross value**: Estimated total sale value
-- **Construction costs**: Rough construction estimate
-- **Estimated profit**: Potential profit after costs
-- **ROI percentage**: Return on investment
+### Holding Income Metrics
+- **Current Rental Income (p.a.)**: Annual rental income from existing tenants
+- **Passing Yield**: Current rental return as percentage of purchase price (Rental Income / Price × 100)
 
-**Important**: These are simplified estimates. Always conduct proper due diligence with:
+### Land Metrics
+- **Land Area**: Total site area in square meters
+- **Price per Land sqm**: Purchase price divided by land area
+
+### Developable Area Metrics (As-of-Right)
+- **Floor Area Ratio (FAR)**: Maximum buildable floor area based on zoning
+  - Major Centre: 6.0 (high-density urban centers)
+  - High Density Residential: 3.0 (apartment buildings)
+  - Mixed Use: 4.0 (mixed-use areas)
+  - Low-Medium Density Residential: 0.6 (townhouses/duplexes)
+- **Gross Floor Area (GFA)**: Total buildable area (Land Area × FAR)
+- **Net Floor Area (NFA)**: Usable area with 80% net-to-gross efficiency ratio
+- **Buildable Units**: Number of units based on 60sqm average unit size
+
+### Cost Metrics
+- **Price per Developable sqm**: Purchase price per sqm of net developable area
+- **Price per Buildable Unit**: Purchase price divided by number of buildable units
+
+### Development Returns
+- **Potential Gross Value**: Estimated total sale value of completed development
+- **Estimated Construction Cost**: Approximate construction costs (~$2,500/sqm)
+- **Estimated Profit**: Potential profit after purchase and construction costs
+- **ROI Percentage**: Return on investment ((Profit / Purchase Price) × 100)
+
+**Important**: These are simplified estimates for initial screening. Always conduct proper due diligence with:
 - Professional quantity surveyors
-- Town planners
+- Town planners and development consultants
 - Real estate valuers
-- Financial advisors
+- Financial advisors and accountants
+- Structural engineers
+- Brisbane City Council planning department
 
 ## Data Sources
 
