@@ -213,6 +213,15 @@ class AlertSystem:
             print(f"   📝 {listing['description']}")
             print(f"   🔗 Listing ID: {listing['listing_id']}")
 
+            # Listing URL
+            listing_url = listing.get('listing_url', 'URL not available')
+            print(f"   🌐 View Listing: {listing_url}")
+
+            # Summary Section
+            print(f"\n   📋 SUMMARY:")
+            print(f"      • Purchase Yield: {passing_yield:.2f}%" if rental_income > 0 else f"      • Purchase Yield: N/A (vacant)")
+            print(f"      • Price per Unit: ${metrics.get('price_per_buildable_unit', 0):,.2f}")
+
         print("\n" + "=" * 90)
 
     def _send_email_alert(self, matches: List[Dict]):
@@ -319,6 +328,13 @@ class AlertSystem:
                 <p style="margin-top: 15px;"><strong>📱 Agent:</strong> {listing['agent']} - {listing['contact']}</p>
                 <p style="color: #7f8c8d;">{listing['description']}</p>
                 <p><em>Listing ID: {listing['listing_id']}</em></p>
+                <p><strong>🌐 View Listing:</strong> <a href="{listing.get('listing_url', '#')}">{listing.get('listing_url', 'URL not available')}</a></p>
+
+                <h4 style="color: #27ae60; margin-top: 15px; margin-bottom: 10px;">📋 Summary</h4>
+                <ul style="margin: 5px 0; background-color: #e8f5e9; padding: 10px; border-radius: 4px;">
+                    <li><strong>Purchase Yield:</strong> {passing_yield:.2f}%</li>
+                    <li><strong>Price per Unit:</strong> ${metrics.get('price_per_buildable_unit', 0):,.2f}</li>
+                </ul>
             </div>
             """
 

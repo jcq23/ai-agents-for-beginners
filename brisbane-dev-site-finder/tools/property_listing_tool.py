@@ -234,7 +234,8 @@ class PropertyListingTool:
                 "frontage_m": 15,
                 "listed_date": (base_date - timedelta(days=14)).strftime("%Y-%m-%d"),
                 "agent": "Ray White Commercial",
-                "contact": "07 3123 4567"
+                "contact": "07 3123 4567",
+                "listing_url": "https://www.realcommercial.com.au/property-123-brunswick-street-fortitude-valley"
             },
             {
                 "listing_id": "BNE-002",
@@ -251,7 +252,8 @@ class PropertyListingTool:
                 "frontage_m": 20,
                 "listed_date": (base_date - timedelta(days=7)).strftime("%Y-%m-%d"),
                 "agent": "Colliers International",
-                "contact": "07 3222 3333"
+                "contact": "07 3222 3333",
+                "listing_url": "https://www.realcommercial.com.au/property-78-grey-street-south-brisbane"
             },
             {
                 "listing_id": "BNE-003",
@@ -371,7 +373,8 @@ class PropertyListingTool:
                 "frontage_m": 60,
                 "listed_date": (base_date - timedelta(days=2)).strftime("%Y-%m-%d"),
                 "agent": "CBRE",
-                "contact": "07 3222 1111"
+                "contact": "07 3222 1111",
+                "listing_url": "https://www.realcommercial.com.au/property-450-470-ann-street-brisbane-city"
             },
             {
                 "listing_id": "BNE-102",
@@ -388,7 +391,8 @@ class PropertyListingTool:
                 "frontage_m": 75,
                 "listed_date": (base_date - timedelta(days=8)).strftime("%Y-%m-%d"),
                 "agent": "Knight Frank",
-                "contact": "07 3246 8888"
+                "contact": "07 3246 8888",
+                "listing_url": "https://www.realcommercial.com.au/property-250-upper-roma-street-brisbane-city"
             },
             {
                 "listing_id": "BNE-103",
@@ -405,7 +409,8 @@ class PropertyListingTool:
                 "frontage_m": 85,
                 "listed_date": (base_date - timedelta(days=15)).strftime("%Y-%m-%d"),
                 "agent": "Colliers International",
-                "contact": "07 3222 3333"
+                "contact": "07 3222 3333",
+                "listing_url": "https://www.realcommercial.com.au/property-1-15-bowen-street-bowen-hills"
             },
             {
                 "listing_id": "BNE-104",
@@ -422,7 +427,8 @@ class PropertyListingTool:
                 "frontage_m": 55,
                 "listed_date": (base_date - timedelta(days=6)).strftime("%Y-%m-%d"),
                 "agent": "JLL",
-                "contact": "07 3231 2888"
+                "contact": "07 3231 2888",
+                "listing_url": "https://www.realcommercial.com.au/property-88-110-commercial-road-newstead"
             },
             {
                 "listing_id": "BNE-105",
@@ -439,7 +445,8 @@ class PropertyListingTool:
                 "frontage_m": 95,
                 "listed_date": (base_date - timedelta(days=4)).strftime("%Y-%m-%d"),
                 "agent": "Savills",
-                "contact": "07 3231 9888"
+                "contact": "07 3231 9888",
+                "listing_url": "https://www.realcommercial.com.au/property-200-230-montague-road-west-end"
             },
             {
                 "listing_id": "BNE-106",
@@ -456,7 +463,8 @@ class PropertyListingTool:
                 "frontage_m": 120,
                 "listed_date": (base_date - timedelta(days=1)).strftime("%Y-%m-%d"),
                 "agent": "CBRE",
-                "contact": "07 3222 1111"
+                "contact": "07 3222 1111",
+                "listing_url": "https://www.realcommercial.com.au/property-75-95-breakfast-creek-road-newstead"
             },
             {
                 "listing_id": "BNE-107",
@@ -473,7 +481,8 @@ class PropertyListingTool:
                 "frontage_m": 65,
                 "listed_date": (base_date - timedelta(days=11)).strftime("%Y-%m-%d"),
                 "agent": "Ray White Commercial",
-                "contact": "07 3123 4567"
+                "contact": "07 3123 4567",
+                "listing_url": "https://www.realcommercial.com.au/property-350-main-street-kangaroo-point"
             }
         ]
 
